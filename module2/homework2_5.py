@@ -9,6 +9,7 @@ lines = int(input('введи количество строк: '))
 columns = int(input('введи количество столбцов: '))
 value = int(input('введи значение: '))
 get_matrix(lines,columns,value)
+#можно так если заменить print внутри функции на return
 #print(get_matrix(lines,columns,value))
 
 
