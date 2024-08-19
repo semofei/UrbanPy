@@ -6,9 +6,9 @@ def single_root_words(*other_words, root_word: str):
     return same_words
 
 
-result1 = single_root_words(*['backlog', 'logo', 'copier', 'delight', 'blog', 'logger'], root_word='log')
+result1 = single_root_words(*['backlog', 'logo', 'copier', 'delight', 'blog', 'logger'], root_word='lOG')
 print('1st try:', result1)
-result2 = single_root_words('hopeless', 'fullness', 'less', 'something', root_word='unless')
+result2 = single_root_words('hopeless', 'fullness', 'lESs', 'something', root_word='unless')
 print('2nd try:', result2)
 
 # noinspection SpellCheckingInspection
