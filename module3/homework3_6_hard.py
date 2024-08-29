@@ -2,7 +2,6 @@ def get_sum(*args: None):
     result = 0
     data_list = [*args]
     for item in data_list:
-        #item = data_list[0]
         if isinstance(item, tuple):
             result += get_sum(*item)
         elif isinstance(item, set):
@@ -10,17 +9,13 @@ def get_sum(*args: None):
         elif isinstance(item, list):
             result += get_sum(*item)
         elif isinstance(item, dict):
-            for key in item:
-                result += len(key)
-                result += get_sum(item[key])
+            result += get_sum(list(map(lambda a: len(a[0]) + get_sum(a[1]), item.items())))
         elif isinstance(item, str):
             result += len(item)
         elif isinstance(item, int):
             result += item
         elif isinstance(item, float):
             result += item
-        else:
-            pass
     return result
 
 
