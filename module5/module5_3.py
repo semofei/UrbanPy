@@ -36,12 +36,6 @@ class House:
 
     def __lt__(self, other):
         return self.number_of_floors < House.gnum(other)
-        # if isinstance(other, House):
-        #     return self.number_of_floors < other.number_of_floors
-        # elif isinstance(other, int):
-        #     return self.number_of_floors < other
-        # else:
-        #     print("невозможно сравнить")
 
     def __gt__(self, other):
         return self.number_of_floors > House.gnum(other)
@@ -93,8 +87,8 @@ print('substract', h1)
 h1 += h2
 print('self add', h1)
 
-# h1 -= h2
-# print('self div', h1)
+h1 -= h2
+print('self div', h1)
 
 h1 = h1 * h2
 print('multiply', h1)
@@ -104,7 +98,6 @@ print(h1-10)
 print(h2+15)
 print(h1/2)
 print(h2*2)
-
 
 
 # noinspection SpellCheckingInspection
