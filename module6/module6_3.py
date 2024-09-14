@@ -1,34 +1,71 @@
 class Horse:
-    def __init__(self):
-        self.sound = "Frrr"
-        self.x_distance = 0
-        super().__init__()
+    sound = 'Frrrr'
 
-    def run(self, dx: int):
+    def __init__(self):
+        self.x_distance = 0
+
+    def run(self, dx):
         self.x_distance += dx
 
 
 class Eagle:
+    sound = "I train, eat, sleep, and repeat"
+
     def __init__(self):
         self.y_distance = 0
-        self.sound = "I train, eat, sleep, and repeat"
 
-    def fly(self, dy: int):
+    def fly(self, dy):
         self.y_distance += dy
 
 
 class Pegasus(Horse, Eagle):
     def __init__(self):
-        super().__init__()
+        Horse.__init__(self)
+        Eagle.__init__(self)
+
     def move(self, dx, dy):
-        super().run(dx)
-        super().fly(dy)
+        Horse.run(self, dx)
+        Eagle.fly(self, dy)
 
     def get_pos(self):
         return (self.x_distance, self.y_distance)
 
     def voice(self):
-        print(self.sound)
+        print(Eagle.sound)
+
+
+#Вариант исполнения без явного обращения к классовым методам
+# class Horse:
+#     def __init__(self):
+#         self.sound = "Frrr"
+#         self.x_distance = 0
+#         super().__init__()
+#
+#     def run(self, dx: int):
+#         self.x_distance += dx
+#
+#
+# class Eagle:
+#     def __init__(self):
+#         self.y_distance = 0
+#         self.sound = "I train, eat, sleep, and repeat"
+#
+#     def fly(self, dy: int):
+#         self.y_distance += dy
+#
+#
+# class Pegasus(Horse, Eagle):
+#     def __init__(self):
+#         super().__init__()
+#     def move(self, dx, dy):
+#         super().run(dx)
+#         super().fly(dy)
+#
+#     def get_pos(self):
+#         return (self.x_distance, self.y_distance)
+#
+#     def voice(self):
+#         print(self.sound)
 
 
 p1 = Pegasus()
@@ -40,13 +77,13 @@ p1.move(-5, 20)
 print(p1.get_pos())
 
 p1.voice()
-print(Pegasus.mro())
-
-p2 = Horse()
-p2.run(45678)
-print(p2.x_distance)
-print(p2.sound)
-print(Horse.mro())
+# print(Pegasus.mro())
+#
+# p2 = Horse()
+# p2.run(45678)
+# print(p2.x_distance)
+# print(p2.sound)
+# print(Horse.mro())
 
 # noinspection SpellCheckingInspection
 """
