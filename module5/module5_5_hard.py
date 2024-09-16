@@ -30,7 +30,7 @@ class Video:
 
 class UrTube:
     users = list()
-    videos = set()
+    videos = list()
     current_user = None
 
     def log_in(self, nickname, password):
@@ -84,7 +84,7 @@ class UrTube:
 
     def add(self, *args: Video):
         for video in args:
-            self.videos.add(video)
+            self.videos.append(video)
 
     def get_videos(self, search: str):  # несмотря на то, что через dict было бы быстрее и проще, для практики реализую через set
         search = search.lower()
