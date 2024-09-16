@@ -1,14 +1,23 @@
 class User:
     def __init__(self, nickname, password, age):
-        self.nickname = hash(nickname)
-        self.password = password
+        self.nickname = nickname
+        self.password = hash(password)
         self.age = age
 
-    def __eq__(self, other):
+    def __eq__(self, other: str):
         if self.nickname == other:
             return True
         else:
             return False
+
+    def __repr__(self):
+        return self.nickname
+
+    # def __contains__(self, item):
+    #     if item == self.nickname:
+    #         return True
+    #     else:
+    #         return False
 
 
 class Video:
@@ -20,29 +29,51 @@ class Video:
 
 
 class UrTube:
-    users = dict()
+    users = list()
     videos = set()
     current_user = None
 
     def log_in(self, nickname, password):
-        user = self.users.get(nickname)
-        if user:
-            if password == user.password:
-                self.current_user = user
-                print("Logged in successfully, ", nickname)
-            else:
-                print("Wrong password!")
-        else:
+        state = False
+        for user in self.users:
+            if user == nickname:
+                state = True
+                if user.password == hash(password):
+                    self.current_user = user
+                    print("Logged in successfully,", nickname)
+                else:
+                    print("Wrong password!")
+        if not state:
             print('User does not exists')
 
     def register(self, nickname, password, age):
-        if nickname not in self.users:
-            us = User(nickname, password, age)
-            self.users[nickname] = us
+        if nickname in self.users:
+            print(f"User {nickname} already exists")
+        else:
+            self.users.append(User(nickname, password, age))
             print("Registration successful", nickname)
             self.log_in(nickname, password)
-        else:
-            print(f"User {nickname} already exists")
+
+# Вариант исполнения для users = dict()
+#     def log_in(self, nickname, password):
+#         user = self.users.get(nickname)
+#         if user:
+#             if password == user.password:
+#                 self.current_user = user
+#                 print("Logged in successfully, ", nickname)
+#             else:
+#                 print("Wrong password!")
+#         else:
+#             print('User does not exists')
+#
+#     def register(self, nickname, password, age):
+#         if nickname not in self.users:
+#             us = User(nickname, password, age)
+#             self.users[nickname] = us
+#             print("Registration successful", nickname)
+#             self.log_in(nickname, password)
+#         else:
+#             print(f"User {nickname} already exists")
 
     def log_out(self):
         if self.current_user:
@@ -55,7 +86,7 @@ class UrTube:
         for video in args:
             self.videos.add(video)
 
-    def get_videos(self, search: str): #несмотря на то, что через dict было бы быстрее и проще, для практики реализую через set
+    def get_videos(self, search: str):  # несмотря на то, что через dict было бы быстрее и проще, для практики реализую через set
         search = search.lower()
         switch = False
         result = []
@@ -107,7 +138,7 @@ ur.watch_video('Для чего девушкам парень программи
 ur.register('vasya_pupkin', 'lolkekcheburek', 13)
 ur.watch_video('Для чего девушкам парень программист?')
 ur.register('urban_pythonist', 'iScX4vIJClb9YQavjAgF', 25)
-#ur.watch_video('Для чего девушкам парень программист?')
+ur.watch_video('Для чего девушкам парень программист?')
 
 # Проверка входа в другой аккаунт
 ur.register('vasya_pupkin', 'F8098FM8fjm9jmi', 55)
@@ -116,7 +147,7 @@ print(ur.current_user)
 
 # Попытка воспроизведения несуществующего видео
 ur.watch_video('non-existing vid!')
-
+print(ur.users)
 
 # noinspection SpellCheckingInspection
 """
