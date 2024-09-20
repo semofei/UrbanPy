@@ -9,7 +9,8 @@ class Product:
 
 
 class Shop:
-    __file_name = 'products.txt'
+    def __init__(self):
+        self.__file_name = 'products.txt'
 
     def get_products(self):
         shop = open(self.__file_name, 'r')
@@ -25,6 +26,7 @@ class Shop:
                 new_shop.write(f'{prod.__str__()} \n')
             else:
                 print(f'{prod.__str__()} already in shop')
+        new_shop.close()
 
 
 s1 = Shop()
