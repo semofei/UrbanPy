@@ -21,16 +21,20 @@ for root, dirs, files in os.walk(directory):
         os.chdir(step_back)
         # print(os.getcwd())
 
+"""2nd option"""
 # for i in os.walk(directory):
-#     for root, dirs, files in i:   # always ValueError occurred whether its 3 or 2 values expected
-#         for file in files:
-#             filepath = os.path.join(file)
-#             filetime = os.path.getmtime(file)
-#             formatted_time = time.strftime("%d.%m.%Y %H:%M", time.localtime(filetime))
-#             file_size = os.path.getsize(file)
-#             parent_dir = os.path.dirname(file)
-#             print('file: {}. Path: {}. Size: {} bytes. last modified: {}. Parent dir: {}'.format(
-#                 file, filepath, file_size, formatted_time, parent_dir))
+#     root, dirs, files = i   # always ValueError occurred whether its 3 or 2 values expected FIXED
+#     step_back = os.getcwd()
+#     for file in files:
+#         os.chdir(root)
+#         filepath = os.path.join(root, file)
+#         filetime = os.path.getmtime(file)
+#         formatted_time = time.strftime("%d.%m.%Y %H:%M", time.localtime(filetime))
+#         file_size = os.path.getsize(file)
+#         parent_dir = os.path.dirname(filepath)
+#         print('file: {}. Path: {}. Size: {} bytes. last modified: {}. Parent dir: {}'.format(
+#             file, filepath, file_size, formatted_time, parent_dir))
+#         os.chdir(step_back)
 
 
 # noinspection SpellCheckingInspection
