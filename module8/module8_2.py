@@ -9,8 +9,10 @@ def personal_sum(numbers):
                 arg = int(arg)
                 summ += arg
                 incorrect_data += 1
+                print("Incorrect data type: %s. But i managed it" % arg)
             except ValueError:
                 incorrect_data += 1
+                print("Incorrect data type: %s" % arg)
     return summ, incorrect_data         # "digits sum = %s, incorrect input data: %s"%(summ, incorrect_data)
 
 
