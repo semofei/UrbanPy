@@ -5,21 +5,15 @@ def personal_sum(numbers):
         try:
             summ += arg
         except TypeError:
-            try:
-                arg = int(arg)
-                summ += arg
-                incorrect_data += 1
-                print("Incorrect data type: %s. But i managed it" % arg)
-            except ValueError:
-                incorrect_data += 1
-                print("Incorrect data type: %s" % arg)
+            incorrect_data += 1
+            print("Incorrect data type: %s" % arg)
     return summ, incorrect_data         # "digits sum = %s, incorrect input data: %s"%(summ, incorrect_data)
 
 
 def calculate_average(numbers):
     try:
-        amount = len(numbers)
-        summ = personal_sum(numbers)[0]
+        summ, incorrect_data = personal_sum(numbers)
+        amount = len(numbers) - incorrect_data
         average = summ / amount
     except ZeroDivisionError:
         average = 0
@@ -34,10 +28,10 @@ dataset_3 = tuple()
 dataset_4 = None
 dataset_5 = '1,2,3,4,5'
 print('personal sum tests:')
-print(personal_sum(dataset_5))
+print(personal_sum(dataset_1))
 # print(personal_sum('1,2,3'))
 print('calculate_average tests:')
-print(calculate_average(dataset_5))
+print(calculate_average(dataset_1))
 
 
 # noinspection SpellCheckingInspection
