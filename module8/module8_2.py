@@ -1,12 +1,19 @@
 def personal_sum(numbers):
-    summ = 0
-    incorrect_data = 0
-    for arg in numbers:
-        try:
-            summ += arg
-        except TypeError:
-            incorrect_data += 1
-            print("Incorrect data type: %s" % arg)
+    if not numbers:
+        summ = None
+        incorrect_data = None
+    elif len(numbers) == 0:
+        summ = None
+        incorrect_data = None
+    else:
+        summ = 0
+        incorrect_data = 0
+        for arg in numbers:
+            try:
+                summ += arg
+            except TypeError:
+                incorrect_data += 1
+                print("Incorrect data type: %s" % arg)
     return summ, incorrect_data         # "digits sum = %s, incorrect input data: %s"%(summ, incorrect_data)
 
 
@@ -28,10 +35,10 @@ dataset_3 = tuple()
 dataset_4 = None
 dataset_5 = '1,2,3,4,5'
 print('personal sum tests:')
-print(personal_sum(dataset_1))
+print(personal_sum(dataset_4))
 # print(personal_sum('1,2,3'))
 print('calculate_average tests:')
-print(calculate_average(dataset_1))
+print(calculate_average(dataset_3))
 
 
 # noinspection SpellCheckingInspection
