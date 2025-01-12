@@ -1,13 +1,15 @@
 import threading
 from time import sleep, time
+from os import remove
 
 
 def write_words(word_count: int, file_name: str):
-    with open(file_name, 'w') as f:
-        for i in range(0,word_count):
+    with open(file_name, 'w', encoding="UTF-8") as f:
+        for i in range(0, word_count):
             f.write(f'Cobra № {i}\n')
             sleep(0.1)
         print('Finished writing to file ', file_name)
+
 
 timestamp_start = time()
 write_words(10, 'example1.txt')
@@ -30,8 +32,18 @@ thr1.join()
 thr2.join()
 thr3.join()
 thr4.join()
-elapsed_time2= time() - timestamp_start2
+elapsed_time2 = time() - timestamp_start2
 print('time for funcs = ', elapsed_time2)
+
+# Deleting test files
+# remove('example1.txt')
+# remove('example2.txt')
+# remove('example3.txt')
+# remove('example4.txt')
+# remove('example5.txt')
+# remove('example6.txt')
+# remove('example7.txt')
+# remove('example8.txt')
 
 
 # noinspection SpellCheckingInspection
